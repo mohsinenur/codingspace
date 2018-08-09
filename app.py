@@ -31,6 +31,8 @@ def handle_incoming_messages():
         reply(sender, sm_emo)
     elif message == sm_emo:
         reply(sender, sm_emo)
+    elif message == "hmm":
+        reply(sender, "hmm2 :D")
     else:
         reply(sender, unknown)
 
