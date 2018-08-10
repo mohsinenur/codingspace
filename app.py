@@ -15,7 +15,7 @@ def reply(user_id, msg):
     print(resp.content)
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['POST'])
 def handle_incoming_messages():
     data = request.json
     sender = data['entry'][0]['messaging'][0]['sender']['id']
