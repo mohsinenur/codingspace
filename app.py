@@ -5,15 +5,15 @@ from pymessenger.bot import Bot
 import os 
 app = Flask(__name__)
 ACCESS_TOKEN = "EAADVw0N2kHEBAGsaysJSKBGrS0SXAK91JaU1yDrShLaOywRoJshD3ZBYkDY2Jb9lPxCG2TRX5ZBwd4m2wwPb8DOKW7uU7dz1NT410b1QP1UK5exVVKP26Ldyo4izFp7lcXT4bcsPK18yDYLf5AkxxY1J2AF8uWHbpQ7Yvb0AZDZD" 
-ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+#ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = 'VERIFY_TOKEN'   
-VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
+#VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
 bot = Bot (ACCESS_TOKEN)
 
 #We will receive messages that Facebook sends our bot at this endpoint 
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['POST','GET'])
 def receive_message():
-    if request.method == 'GET':
+    if request.method == 'POST':
         """Before allowing people to message your bot, Facebook has implemented a verify token
         that confirms all requests that your bot receives came from Facebook.""" 
         token_sent = request.args.get("hub.verify_token")
