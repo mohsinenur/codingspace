@@ -28,12 +28,15 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 r_msg = message['message']['text']
                 if message['message'].get('text'):
-                    # text matching start
+                    # declearing variable
                     t_hi = ['hi','Hi','HI','hI']
                     t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
-                    t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great']
+                    t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great', ':)']
                     t_how_r_u = ['how are you?', 'How are you?']
-                    t_hmm = ['hmm', 'Hmm', 'oh', 'ooh']
+                    t_hmm = ['hmm', 'Hmm', 'oh', 'ooh', 'ok', 'okay', 'Ok', 'OK', 'Okay']
+                    t_who_r_u = ['who are you?', 'Who are you?']
+                    
+                    # matching text for reply
                     if r_msg in t_hi:
                         response_sent_text = 'Hello, how can I help you?'
                     elif r_msg in t_hello:
@@ -44,8 +47,12 @@ def receive_message():
                         response_sent_text = 'I am fine. You?'
                     elif r_msg in t_hmm:
                         response_sent_text = 'Hmm'
+                    elif r_msg in t_who_r_u:
+                        response_sent_text = 'I am Bot. Made by SSL Developer Team.'
                     else:
                         response_sent_text = 'Unknown text! Reply you later. :)'
+                    
+                    # sending msg
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
