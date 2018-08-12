@@ -2,7 +2,7 @@ from flask import Flask, request
  
 app = Flask(__name__)
  
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST', 'GET'])
 def handle_verification():
     return request.args['hub.challenge']
  
