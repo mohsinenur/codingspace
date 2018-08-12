@@ -28,7 +28,7 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 recipient_message = message['message']['text']
                 if message['message'].get('text'):
-                    response_sent_text = get_message()
+                    response_sent_text = recipient_message
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
@@ -49,12 +49,8 @@ def verify_fb_token(token_sent):
 def get_message():
     sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
     # return selected item to the user
-    # return random.choice(sample_responses)
+    return random.choice(sample_responses)
     
-    if recipient_message == 'hi':
-        return 'hello'
-    else:
-        return random.choice(sample_responses)
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
