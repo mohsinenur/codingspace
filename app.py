@@ -1,6 +1,7 @@
 #Python libraries that we need to import for our bot
 import random
 from flask import Flask, request
+from decimal import Decimal
 import requests
 from pymessenger.bot import Bot
 import os 
@@ -57,7 +58,10 @@ def receive_message():
                         weather = {
                             'temperature': data['main']['temp']
                         }
-                        response_sent_text = 'Temperature of Dhaka ' + str(weather['temperature'])
+                        f_temp = int(weather['temperature'])
+                        c_temp = (f - 32) * 5 / 9
+                        r_c_temp = round(Decimal(c_temp), 2)
+                        response_sent_text = 'Temperature of Dhaka is ' + str(r_c_temp) + ' °C'
                     else:
                         response_sent_text = 'Unknown text! Reply you later. :)'
                     
