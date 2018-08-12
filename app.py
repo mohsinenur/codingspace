@@ -28,8 +28,7 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 r_msg = message['message']['text']
                 if message['message'].get('text'):
-                    if r_msg == 'hi' or 'hello'
-                    response_sent_text = recipient_msg
+                    response_sent_text = get_text_message()
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
