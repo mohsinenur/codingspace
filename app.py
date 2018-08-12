@@ -30,10 +30,22 @@ def receive_message():
                 if message['message'].get('text'):
                     # text matching start
                     t_hi = ['hi','Hi','HI','hI']
+                    t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
+                    t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great']
+                    t_how_r_u = ['how are you?', 'How are you?']
+                    t_hmm = ['hmm', 'Hmm', 'oh', 'ooh']
                     if r_msg in t_hi:
-                        response_sent_text = 'hello'
+                        response_sent_text = 'Hello, how can I help you?'
+                    elif r_msg in t_hello:
+                        response_sent_text = 'Hi, how can I help you?'
+                    elif r_msg in t_fine:
+                        response_sent_text = ':)'
+                    elif r_msg in t_how_r_u:
+                        response_sent_text = 'I am fine. You?'
+                    elif r_msg in t_hmm:
+                        response_sent_text = 'Hmm'
                     else:
-                        response_sent_text = get_text_message()
+                        response_sent_text = 'Unknown text! Reply you later. :)'
                     send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
                 if message['message'].get('attachments'):
