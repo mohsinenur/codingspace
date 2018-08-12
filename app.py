@@ -50,7 +50,13 @@ def receive_message():
                     elif r_msg in t_who_r_u:
                         response_sent_text = 'I am Bot. Made by SSL Developer Team.'
                     elif r_msg == 'temperature of dhaka':
-                        response_sent_text = 'Temperature of Dhaka is 280'
+                        api_address = 'https://samples.openweathermap.org/data/2.5/weather?appid=b6907d289e10d714a6e88b30761fae22&q=Dhaka'
+                        data = requests.get(api_address).json()
+
+                        weather = {
+                            'temperature': data['main']['temp']
+                        }
+                        response_sent_text = 'Temperature of Dhaka ' + str(weather['temperature'])
                     else:
                         response_sent_text = 'Unknown text! Reply you later. :)'
                     
