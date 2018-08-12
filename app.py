@@ -49,6 +49,8 @@ def receive_message():
                         response_sent_text = 'Hmm'
                     elif r_msg in t_who_r_u:
                         response_sent_text = 'I am Bot. Made by SSL Developer Team.'
+                    elif r_msg == 'temperature of dhaka':
+                        response_sent_text = 'Temperature of Dhaka is 280'
                     else:
                         response_sent_text = 'Unknown text! Reply you later. :)'
                     
