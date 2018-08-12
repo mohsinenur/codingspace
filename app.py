@@ -17,25 +17,6 @@ def reply(user_id, msg):
 
 @app.route('/', methods=['POST'])
 def handle_incoming_messages():
-    data = request.json
-    sender = data['entry'][0]['messaging'][0]['sender']['id']
-    message = data['entry'][0]['messaging'][0]['message']['text']
-    unknown = "Unknown text! I will reply you later. :)"
-    hlw = "Hello"
-    sm_emo = ":)"
-    if message == "hi":
-        reply(sender, hlw)
-    elif message == "how are you?":
-        reply(sender, "fine. you?")
-    elif message == "ok":
-        reply(sender, sm_emo)
-    elif message == sm_emo:
-        reply(sender, sm_emo)
-    elif message == "hmm":
-        reply(sender, "hmm2 :D")
-    else:
-        reply(sender, unknown)
-
     return "ok"
 
 
