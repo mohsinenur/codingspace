@@ -57,7 +57,7 @@ def receive_message():
                 if message.get('message'):
                     # Facebook Messenger ID for user so we know where to send response back to
                     recipient_id = message['sender']['id']
-                    exist_user = Messages.query.filter_by(user_id=recipient_id).first()
+                    exist_user = Message.query.filter_by(user_id=recipient_id).first()
                     if message['message'].get('text'):
                         r_msg = message['message']['text']
                         # declearing variable
@@ -137,8 +137,8 @@ def send_message(recipient_id, response, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
-    session_query = Messages(user_id=recipient_id, text_send=response, text_receive=r_msg,
-                             date=time_format, session_id=response)
+    session_query = Message(user_id=recipient_id, text_send=response, text_receive=r_msg,
+                             date=time_format, session=response)
     if session_query:
         db.session.add(session_query)
         db.session.commit()
