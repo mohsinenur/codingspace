@@ -64,7 +64,7 @@ def receive_message():
                         # matching text for reply
                         if r_msg in t_hi:
                             if exist_user:
-                                response_sent_text = 'Hello ' + exist_user +', how can I help you?'
+                                response_sent_text = 'Hello ' + exist_user.user_id +', how can I help you?'
                             else:
                                 response_sent_text = 'Hello, how can I help you?'                         
                         elif r_msg in t_hello:
