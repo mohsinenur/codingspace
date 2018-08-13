@@ -131,6 +131,8 @@ def send_message(recipient_id, response, r_msg):
     session_query = Messages(user_id=recipient_id, text_send=response, text_receive=r_msg,
                              date=time_format, session_id=response)
     if session_query:
+        db.session.add(session_query)
+        db.session.commit()
         bot.send_text_message(recipient_id, response)
     else:
         response = 'Sorry something went wrong! at ' + time_format
