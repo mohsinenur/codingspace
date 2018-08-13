@@ -89,7 +89,7 @@ def receive_message():
                         send_message(recipient_id, response_sent_text, r_msg)
                     # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
-                        r_msg = message['message']['attachments']
+                        r_msg = get_file_message()
                         send_file_message(recipient_id, r_msg)
     return "Message Processed"
 
@@ -133,7 +133,7 @@ def send_message(recipient_id, response, r_msg):
 
 def send_file_message(recipient_id, response):
     # sends user the text message provided via input response parameter
-    bot.send_file(recipient_id, response)
+    bot.send_text_message(recipient_id, response)
     return "success"
 
 
