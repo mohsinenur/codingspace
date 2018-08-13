@@ -7,3 +7,4 @@ Flask-SQLAlchemy==2.3.2
 SQLAlchemy==1.2.10
 pipenv==2018.7.1
 python-dotenv==0.9.1
+psycopg2==2.7.5
