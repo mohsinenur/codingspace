@@ -57,6 +57,7 @@ def receive_message():
                 if message.get('message'):
                     # Facebook Messenger ID for user so we know where to send response back to
                     recipient_id = message['sender']['id']
+                    recipient_name = message['sender']['first_name']
                     exist_user = Message.query.filter_by(user_id=recipient_id).first()
                     if message['message'].get('text'):
                         r_msg = message['message']['text']
@@ -73,7 +74,7 @@ def receive_message():
                         # matching text for reply
                         if r_msg in t_hi:
                             if exist_user:
-                                response_sent_text = 'Hello ' + exist_user.user_id +', how can I help you?'
+                                response_sent_text = 'Hello ' + recipient_name +', how can I help you?'
                             else:
                                 response_sent_text = 'Hello, how can I help you?'                         
                         elif r_msg in t_hello:
