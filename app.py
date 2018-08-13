@@ -4,6 +4,7 @@ import random
 from flask import Flask, request
 from decimal import Decimal
 import requests
+import psycopg2
 from pymessenger.bot import Bot
 from flask_sqlalchemy import SQLAlchemy
 
@@ -58,6 +59,7 @@ def receive_message():
                         t_hmm = ['hmm', 'Hmm', 'oh', 'ooh', 'ok', 'okay', 'Ok', 'OK', 'Okay']
                         t_who_r_u = ['who are you?', 'Who are you?']
                         t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature']
+                        t_tnx = ['tnx', 'thanks', 'thank you', 'Thanks', 'Tnx', 'Thank you']
 
                         # matching text for reply
                         if r_msg in t_hi:
@@ -73,6 +75,8 @@ def receive_message():
                             response_sent_text = 'I am fine. You?'
                         elif r_msg in t_hmm:
                             response_sent_text = 'Hmm'
+                        elif r_msg in t_tnx:
+                            response_sent_text = 'You are welcome :)'
                         elif r_msg in t_who_r_u:
                             response_sent_text = 'I am Bot. Made by SSL Developer Team.'
                         elif r_msg in t_temp:
