@@ -119,9 +119,9 @@ def get_file_message():
 def send_message(recipient_id, response, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
-        time_format = now.strftime("%Y-%M-%D %H:%M")
-        session_query = Messages(user_id=recipient_id, text_send=response, text_receive=r_msg,
-                                 date=time_format, session_id=response)
+    time_format = now.strftime("%d/%m/%y %H:%M")
+    session_query = Messages(user_id=recipient_id, text_send=response, text_receive=r_msg,
+                             date=time_format, session_id=response)
     if session_query:
         bot.send_text_message(recipient_id, response)
     else:
