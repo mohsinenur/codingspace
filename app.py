@@ -90,7 +90,7 @@ def receive_message():
                     # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
                         response_sent_nontext = get_file_message()
-                        send_message(recipient_id, response_sent_nontext)
+                        send_file_message(recipient_id, response_sent_nontext)
     return "Message Processed"
 
 
@@ -128,6 +128,12 @@ def send_message(recipient_id, response, r_msg):
         response = 'Sorry something went wrong! at ' + time_format
         bot.send_text_message(recipient_id, response)
 
+    return "success"
+
+
+def send_file_message(recipient_id, response):
+    # sends user the text message provided via input response parameter
+    bot.send_text_message(recipient_id, response)
     return "success"
 
 
