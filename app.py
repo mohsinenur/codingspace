@@ -118,11 +118,15 @@ def get_file_message():
 # uses PyMessenger to send response to user
 def send_message(recipient_id, response, r_msg):
     # sends user the text message provided via input response parameter
-    if bot.send_text_message(recipient_id, response):
-        now = datetime.datetime.now()
+    now = datetime.datetime.now()
         time_format = now.strftime("%Y-%m-%d %H:%M")
         session_query = Messages(user_id=recipient_id, text_send=response, text_receive=r_msg,
                                  date=time_format, session_id=response)
+    if session_query:
+        bot.send_text_message(recipient_id, response)
+    else:
+        response = 'Sorry something went wrong! at ' + time_format
+        bot.send_text_message(recipient_id, response)
 
     return "success"
 
