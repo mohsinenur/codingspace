@@ -47,6 +47,7 @@ def receive_message():
                 if message.get('message'):
                     # Facebook Messenger ID for user so we know where to send response back to
                     recipient_id = message['sender']['id']
+                    exist_user = Message.query.filter_by(user_id=recipient_id.first()
                     if message['message'].get('text'):
                         r_msg = message['message']['text']
                         # declearing variable
@@ -56,11 +57,14 @@ def receive_message():
                         t_how_r_u = ['how are you?', 'How are you?']
                         t_hmm = ['hmm', 'Hmm', 'oh', 'ooh', 'ok', 'okay', 'Ok', 'OK', 'Okay']
                         t_who_r_u = ['who are you?', 'Who are you?']
-                        t_temp = ['temperature in dhaka?', 'what is temperature in dhaka?']
+                        t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature']
 
                         # matching text for reply
                         if r_msg in t_hi:
-                            response_sent_text = 'Hello, how can I help you?'
+                            if exist_user:
+                                response_sent_text = 'Hello ' + exist_user +', how can I help you?'
+                            else:
+                                response_sent_text = 'Hello, how can I help you?'                         
                         elif r_msg in t_hello:
                             response_sent_text = 'Hi, how can I help you?'
                         elif r_msg in t_fine:
@@ -81,7 +85,7 @@ def receive_message():
                             f_temp = int(weather['temperature'])
                             c_temp = (f_temp - 32) * 5 / 9
                             r_c_temp = round(Decimal(c_temp), 2)
-                            response_sent_text = 'Temperature of Dhaka is ' + str(r_c_temp) + ' °C'
+                            response_sent_text = 'Now Dhaka temperature is ' + str(r_c_temp) + ' °C'
                         else:
                             response_sent_text = 'Unknown text! Reply you later. :)'
 
