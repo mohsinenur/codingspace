@@ -47,8 +47,8 @@ def receive_message():
                 if message.get('message'):
                     # Facebook Messenger ID for user so we know where to send response back to
                     recipient_id = message['sender']['id']
-                    r_msg = message['message']['text']
                     if message['message'].get('text'):
+                        r_msg = message['message']['text']
                         # declearing variable
                         t_hi = ['hi','Hi','HI','hI']
                         t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
@@ -89,8 +89,9 @@ def receive_message():
                         send_message(recipient_id, response_sent_text, r_msg)
                     # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
+                        r_msg = message['message']['attachments']
                         response_sent_nontext = get_file_message()
-                        send_file_message(recipient_id, response_sent_nontext)
+                        send_file_message(recipient_id, r_msg)
     return "Message Processed"
 
 
