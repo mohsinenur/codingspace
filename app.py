@@ -21,11 +21,11 @@ bot = Bot(ACCESS_TOKEN)
 
 class Messages(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(20))
+    user_id = db.Column(db.String(50))
     text_send = db.Column(db.Text)
     text_receive = db.Column(db.Text)
-    date = db.Column(db.String(20), default=datetime.datetime.utcnow)
-    session_id = db.Column(db.String(20))
+    date = db.Column(db.String(100), default=datetime.datetime.utcnow)
+    session_id = db.Column(db.Text)
 
 
 # We will receive messages that Facebook sends our bot at this endpoint
