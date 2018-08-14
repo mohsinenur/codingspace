@@ -1,7 +1,7 @@
 # Python libraries that we need to import for our bot
 import datetime
 import random
-from flask import Flask, request
+from flask import Flask, request, render_template
 from decimal import Decimal
 import requests
 import psycopg2
@@ -110,7 +110,7 @@ def verify_fb_token(token_sent):
     # if they match, allow the request, else return an error
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
-    return 'Great! Everything Goes Fine.'
+    return render_template('fbchat.html')
 
 
 # chooses a random message to send to the user
