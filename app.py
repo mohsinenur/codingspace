@@ -31,7 +31,7 @@ class Message(db.Model):
 # We will receive messages that Facebook sends our bot at this endpoint
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/bot", methods=['GET', 'POST'])
 def receive_message():
     if request.method == 'GET':
         """Before allowing people to message your bot, Facebook has implemented a verify token
@@ -105,12 +105,17 @@ def receive_message():
     return "Message Processed"
 
 
+@app.route("/", methods=['GET', 'POST'])
+def home():
+    return render_template('fbchat.html')
+
+
 def verify_fb_token(token_sent):
     # take token sent by facebook and verify it matches the verify token you sent
     # if they match, allow the request, else return an error
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
-    return render_template('fbchat.html')
+    return 'Invalid token!'
 
 
 # chooses a random message to send to the user
