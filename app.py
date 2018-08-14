@@ -17,15 +17,6 @@ db = SQLAlchemy(app)
 ACCESS_TOKEN = 'EAADVw0N2kHEBAGsaysJSKBGrS0SXAK91JaU1yDrShLaOywRoJshD3ZBYkDY2Jb9lPxCG2TRX5ZBwd4m2wwPb8DOKW7uU7dz1NT410b1QP1UK5exVVKP26Ldyo4izFp7lcXT4bcsPK18yDYLf5AkxxY1J2AF8uWHbpQ7Yvb0AZDZD'   #ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = 'VERIFY_TOKEN'   # VERIFY_TOKEN = os.environ['VERIFY_TOKEN'] not need
 bot = Bot(ACCESS_TOKEN)
-
-
-class Messages(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(50))
-    text_send = db.Column(db.Text)
-    text_receive = db.Column(db.Text)
-    date = db.Column(db.String(100), default=datetime.datetime.utcnow)
-    session_id = db.Column(db.Text)
     
 
 class Message(db.Model):
@@ -92,7 +83,7 @@ def receive_message():
                         elif r_msg in t_who_r_u:
                             response_sent_text = 'I am Bot. Made by SSL Developer Team.'
                         elif r_msg in t_temp:
-                            api_address = 'https://samples.openweathermap.org/data/2.5/weather?appid=b6907d289e10d714a6e88b30761fae22&q=Dhaka'
+                            api_address = 'https://samples.openweathermap.org/data/2.5/weather?appid=ed4fb99c31f3dd7a8c587d70cb1fe8ff&q=Dhaka'
                             data = requests.get(api_address).json()
 
                             weather = {
