@@ -187,11 +187,10 @@ def salat_time():
     }
     elements =   [
            {
-            "title":"Fajar",
-            "subtitle":salat['Fajr']     
-          },{
+            {"title":"Fajar",
+            "subtitle":salat['Fajr']},{
             "title":"Sunrise",
-            "subtitle":salat['Sunrise']     
+            "subtitle":salat['Sunrise']}
           }
         ] 
     # salat_value = 'Fajar ' + salat['Fajr'] + '\nSunrise ' + salat['Sunrise'] + '\nDhuhr ' + salat['Dhuhr'] + '\nAsar ' + salat['Asr'] + '\nSunset ' + salat['Sunset'] + '\nMaghrib ' + salat['Maghrib'] + '\nIsha ' + salat['Isha'] + '\nImsak ' + salat['Imsak'] + '\nMidnight ' + salat['Midnight']
