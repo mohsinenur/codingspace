@@ -144,6 +144,7 @@ def temperature():
         'temperature': data['currently']['temperature'],
         'summary': data['currently']['summary'],
         'icon': data['currently']['icon']
+        'timezone': data['timezone']
     }
     f_temp = int(weather['temperature'])
     c_temp = (f_temp - 32) * 5 / 9
@@ -154,8 +155,7 @@ def temperature():
             # "image_url":,
             "subtitle":weather['summary'],
             "default_action": {
-              "type": "web_url",
-              "url": "https://weather.com/",
+              "subtitle": weather['timezone'],
               "webview_height_ratio": "tall",
             },
             "buttons":[
@@ -163,11 +163,7 @@ def temperature():
                 "type":"web_url",
                 "url":"https://weather.com/",
                 "title":"View Website"
-              },{
-                "type":"postback",
-                "title":"Start Chatting",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }              
+              }             
             ]      
           }
         ]              
