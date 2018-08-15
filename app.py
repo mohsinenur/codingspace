@@ -93,13 +93,18 @@ def receive_message():
                             f_temp = int(weather['temperature'])
                             c_temp = (f_temp - 32) * 5 / 9
                             r_c_temp = round(c_temp)
+                            weather_vaule = {
+                                'title': r_c_temp,
+                                'image_url': weather['image_url'],
+                                'subtitle': weather['subtitle']
+                            }
                             response_sent_text = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
                         else:
                             response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
 
                         # sending msg
                         if t_temp:
-                            send_temp_message(recipient_id, weather, r_msg)
+                            send_temp_message(recipient_id, weather_vaule, r_msg)
                         else:
                             send_message(recipient_id, response_sent_text, r_msg)
                         
