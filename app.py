@@ -150,11 +150,11 @@ def sun_set():
     w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
     data = requests.get(w_api_address).json()
     weather = {
-        'sun_set': data['daily']['data']['sunsetTime'],
-        'sun_rise': data['daily']['data']['sunriseTime']
+        'sun_set': data['daily']['data'],
+        'sun_rise': data['daily']['data']
     }
-    s_set = int(weather['sun_set'])
-    s_rise = int(weather['sun_rise'])
+    s_set = int(weather['sun_set']['sunsetTime'])
+    s_rise = int(weather['sun_rise']['sunriseTime'])
     s_set = time.strftime('%H:%M:%S', time.localtime(s_set))
     s_rise = time.strftime('%H:%M:%S', time.localtime(s_rise))
     sun_value = 'Now Dhaka sunset at ' + str(s_set) + ' sunrise at ' + str(s_rise) 
