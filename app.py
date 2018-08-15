@@ -125,7 +125,6 @@ def receive_message():
                                   }
                                 }
                               }
-                            }
                             # sending template msg
                             send_temp_message(recipient_id, weather_vaule, r_msg)
                         else:
