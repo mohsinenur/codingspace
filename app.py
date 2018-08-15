@@ -95,9 +95,17 @@ def receive_message():
                             c_temp = (f_temp - 32) * 5 / 9
                             r_c_temp = round(c_temp)
                             weather_vaule = {
-                                'title': str(r_c_temp) + '°C',
-                                'image_url': weather['icon'],
-                                'subtitle': weather['summary']
+                                "attachment":{
+                                  "type":"template",
+                                  "payload":{
+                                    "template_type":"generic",
+                                    "elements":[
+                                        'title': str(r_c_temp) + '°C',
+                                        'image_url': weather['icon'],
+                                        'subtitle': weather['summary']
+                                    ]
+                                  }
+                                }
                             }
                             # sending template msg
                             send_temp_message(recipient_id, weather_vaule, r_msg)
