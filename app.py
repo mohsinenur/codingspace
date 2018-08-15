@@ -58,7 +58,7 @@ def receive_message():
                         t_how_r_u = ['how are you?', 'How are you?']
                         t_hmm = ['hmm', 'Hmm', 'oh', 'ooh', 'ok', 'okay', 'Ok', 'OK', 'Okay']
                         t_who_r_u = ['who are you?', 'Who are you?']
-                        t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature', 'dhaka temp']
+                        t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature', 'dhaka temp', 'temp']
                         t_tnx = ['tnx', 'thanks', 'thank you', 'Thanks', 'Tnx', 'Thank you']
 
                         # matching text for reply
