@@ -94,7 +94,7 @@ def receive_message():
                             c_temp = (f_temp - 32) * 5 / 9
                             r_c_temp = round(c_temp)
                             weather_vaule = {
-                                'title': r_c_temp + str(r_c_temp) + '°C',
+                                'title': r_c_temp + '°C',
                                 'image_url': weather['icon'],
                                 'subtitle': weather['summary']
                             }
