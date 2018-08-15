@@ -142,24 +142,26 @@ def temperature():
     data = requests.get(w_api_address).json()
     weather = {
         'temperature': data['currently']['temperature']
+        'summary': data['currently']['summary']
+        'icon': data['currently']['icon']
     }
     f_temp = int(weather['temperature'])
     c_temp = (f_temp - 32) * 5 / 9
     r_c_temp = round(c_temp)
-    r_c_temp =   [
+    elements =   [
            {
-            "title":"Welcome!",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
-            "subtitle":"We have the right hat for everyone.",
+            "title":'Now Dhaka temperature is ' + str(r_c_temp) + '°C',
+            "image_url":weather['icon'],
+            "subtitle":weather['summary'],
             "default_action": {
               "type": "web_url",
-              "url": "https://petersfancybrownhats.com/view?item=103",
+              "url": "",
               "webview_height_ratio": "tall",
             },
             "buttons":[
               {
                 "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
+                "url":"https://weather.com/weather/today",
                 "title":"View Website"
               },{
                 "type":"postback",
@@ -170,7 +172,7 @@ def temperature():
           }
         ]              
     # tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
-    return r_c_temp
+    return elements
 
 
 def salat_time():
