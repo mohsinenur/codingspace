@@ -55,7 +55,10 @@ def receive_message():
                         # declearing variable
                         response_sent_text = text_matching(r_msg, exist_user)
                         # sending text msg
-                        send_message(recipient_id, response_sent_text, r_msg)
+                        if type(response_sent_text) == 'str': 
+                            send_message(recipient_id, response_sent_text, r_msg)
+                        else:
+                            send_temp_message(recipient_id, response_sent_text, r_msg)
                         
                     # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
@@ -142,8 +145,29 @@ def temperature():
     f_temp = int(weather['temperature'])
     c_temp = (f_temp - 32) * 5 / 9
     r_c_temp = round(c_temp)
+    r_c_temp = [       
+        {
+            "title":"Welcome!",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"We have the right hat for everyone.",
+            "default_action": {
+                "type": "web_url",
+                "url": "https://petersfancybrownhats.com/view?item=103",
+                "webview_height_ratio": "tall",
+            },
+            "buttons":[
+            {
+                "type":"web_url",
+                "url":"https://petersfancybrownhats.com",
+                "title":"View Website"
+            },{
+                "type":"postback",
+                "title":"Start Chatting",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+        }              
+    ]
     tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
-    return tempereature
+    return r_c_temp
 
 
 def salat_time():
@@ -165,6 +189,7 @@ def salat_time():
 
 
 def text_matching(r_msg, exist_user):
+    r_c_temp = ''
     t_hi = ['hi','Hi','HI','hI']
     t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
     t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great', ':)']
