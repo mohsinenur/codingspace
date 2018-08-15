@@ -84,15 +84,7 @@ def receive_message():
                         elif r_msg in t_who_r_u:
                             response_sent_text = 'I am Bot. Made by SSL Developer Team.'
                         elif r_msg in t_temp:
-                            w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
-                            data = requests.get(w_api_address).json()
-                            weather = {
-                                'temperature': data['currently']['temperature']
-                            }
-                            f_temp = int(weather['temperature'])
-                            c_temp = (f_temp - 32) * 5 / 9
-                            r_c_temp = round(c_temp)
-                            response_sent_text = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
+                            response_sent_text = temperature()
                         else:
                             response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
                         
@@ -174,6 +166,19 @@ def send_file_message(recipient_id, response):
     # sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
     return "success"
+
+
+def temperature():
+    w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
+    data = requests.get(w_api_address).json()
+    weather = {
+        'temperature': data['currently']['temperature']
+    }
+    f_temp = int(weather['temperature'])
+    c_temp = (f_temp - 32) * 5 / 9
+    r_c_temp = round(c_temp)
+    tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
+    return tempereature
 
 
 if __name__ == "__main__":
