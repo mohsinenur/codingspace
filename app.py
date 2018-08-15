@@ -154,10 +154,7 @@ def temperature():
             "title":str(r_c_temp) + '°C ' + weather['icon'].title(),
             # "image_url":,
             "subtitle":weather['summary'],
-            "default_action": {
-              "subtitle": weather['timezone'],
-              "webview_height_ratio": "tall",
-            },
+            "subtitle": weather['timezone']
             "buttons":[
               {
                 "type":"web_url",
