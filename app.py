@@ -86,7 +86,9 @@ def receive_message():
                             w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
                             data = requests.get(w_api_address).json()
                             weather = {
-                                'temperature': data['currently']['temperature']
+                                'title': data['currently']['temperature']
+                                'image_url': data['currently']['icon']
+                                'subtitle': data['currently']['summary']
                             }
                             f_temp = int(weather['temperature'])
                             c_temp = (f_temp - 32) * 5 / 9
@@ -96,7 +98,11 @@ def receive_message():
                             response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
 
                         # sending msg
-                        send_message(recipient_id, response_sent_text, r_msg)
+                        if t_temp:
+                            send_temp_message(recipient_id, weather, r_msg)
+                        else:
+                            send_message(recipient_id, response_sent_text, r_msg)
+                        
                     # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
                         r_msg = get_file_message()
@@ -144,6 +150,23 @@ def send_message(recipient_id, response, r_msg):
     else:
         response = 'Sorry something went wrong! at ' + time_format
         bot.send_text_message(recipient_id, response)
+
+    return "success"
+
+
+def send_temp_message(recipient_id, response, r_msg):
+    # sends user the text message provided via input response parameter
+    now = datetime.datetime.now()
+    time_format = now.strftime("%d/%m/%y %H:%M")
+    session_query = Message(user_id=recipient_id, text_send=response, text_receive=r_msg,
+                             date=time_format, session=response)
+    if session_query:
+        db.session.add(session_query)
+        db.session.commit()
+        bot.send_generic_message(recipient_id, response)
+    else:
+        response = 'Sorry something went wrong! at ' + time_format
+        bot.send_generic_message(recipient_id, response)
 
     return "success"
 
