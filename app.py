@@ -6,7 +6,7 @@ from flask import Flask, request, render_template
 from decimal import Decimal
 import requests
 import psycopg2
-from pymessenger.bot import Bot
+from pymessenger import Bot
 from flask_sqlalchemy import SQLAlchemy
 
 import os 
