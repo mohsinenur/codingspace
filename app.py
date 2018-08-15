@@ -150,7 +150,7 @@ def temperature():
     r_c_temp = round(c_temp)
     elements =   [
            {
-            "title":str(r_c_temp) + '°C ' weather['icon'],
+            "title":str(r_c_temp) + '°C ' + weather['icon'].title(),
             # "image_url":,
             "subtitle":weather['summary'],
             "default_action": {
