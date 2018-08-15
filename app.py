@@ -169,7 +169,7 @@ def temperature():
 
 
 def salat_time():
-    w_api_address = 'http://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=5'
+    w_api_address = 'http://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=1'
     data = requests.get(w_api_address).json()
     salat = {
         'Fajr': data['data']['timings']['Fajr'],
