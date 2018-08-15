@@ -160,8 +160,8 @@ def salat_time():
         'Imsak': data['data']['timings']['Imsak'],
         'Midnight': data['data']['timings']['Midnight']
     }
-    salat_value = 'Fajar ' + salat['Fajr'] + '</br>Sunrise ' + salat['Sunrise'] + '</br>Fajar ' + salat['Dhuhr']
-    return s_fajr_value
+    salat_value = 'Fajar ' + salat['Fajr'] + '</br>Sunrise ' + salat['Sunrise'] + '</br>Dhuhr ' + salat['Dhuhr'] + '</br>Asar ' + salat['Asr'] + '</br>Sunset ' + salat['Sunset'] + 'Maghrib ' + salat['Maghrib'] + '</br>Isha ' + salat['Isha'] + '</br>Imsak ' + salat['Imsak'] + '</br>Midnight ' + salat['Midnight']
+    return salat_value
 
 
 def text_matching(r_msg, exist_user):
