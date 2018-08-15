@@ -58,6 +58,9 @@ def receive_message():
                         if response_sent_text == 'temp':
                             temp_vaule = temperature()
                             send_temp_message(recipient_id, temp_vaule, r_msg)
+                        elif response_sent_text == 'salat':
+                            salat_vaule = salat_time()
+                            send_temp_message(recipient_id, salat_vaule, r_msg)
                         else:
                             send_message(recipient_id, response_sent_text, r_msg)
                         
@@ -112,7 +115,7 @@ def send_message(recipient_id, response, r_msg):
     return "success"
 
 
-def send_temp_message(recipient_id, weather_vaule, r_msg):
+def send_temp_message(recipient_id, vaule, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
@@ -123,7 +126,7 @@ def send_temp_message(recipient_id, weather_vaule, r_msg):
     if session_query:
         db.session.add(session_query)
         db.session.commit()
-        bot.send_generic_message(recipient_id, weather_vaule)
+        bot.send_generic_message(recipient_id, vaule)
     else:
         response = 'Sorry something went wrong! at ' + time_format
         bot.send_generic_message(recipient_id, response)
@@ -191,8 +194,8 @@ def salat_time():
             "subtitle":salat['Sunrise']     
           }
         ] 
-    salat_value = 'Fajar ' + salat['Fajr'] + '\nSunrise ' + salat['Sunrise'] + '\nDhuhr ' + salat['Dhuhr'] + '\nAsar ' + salat['Asr'] + '\nSunset ' + salat['Sunset'] + '\nMaghrib ' + salat['Maghrib'] + '\nIsha ' + salat['Isha'] + '\nImsak ' + salat['Imsak'] + '\nMidnight ' + salat['Midnight']
-    return salat_value
+    # salat_value = 'Fajar ' + salat['Fajr'] + '\nSunrise ' + salat['Sunrise'] + '\nDhuhr ' + salat['Dhuhr'] + '\nAsar ' + salat['Asr'] + '\nSunset ' + salat['Sunset'] + '\nMaghrib ' + salat['Maghrib'] + '\nIsha ' + salat['Isha'] + '\nImsak ' + salat['Imsak'] + '\nMidnight ' + salat['Midnight']
+    return elements
 
 
 def text_matching(r_msg, exist_user):
