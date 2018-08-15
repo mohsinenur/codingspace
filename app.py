@@ -1,6 +1,7 @@
 # Python libraries that we need to import for our bot
 import datetime
 import random
+import time
 from flask import Flask, request, render_template
 from decimal import Decimal
 import requests
@@ -52,7 +53,7 @@ def receive_message():
                     if message['message'].get('text'):
                         r_msg = message['message']['text']
                         # declearing variable
-                        response_sent_text = text_matching()
+                        response_sent_text = text_matching(r_msg)
                         # sending text msg
                         send_message(recipient_id, response_sent_text, r_msg)
                         
@@ -154,11 +155,13 @@ def sun_set():
     }
     s_set = int(weather['sun_set'])
     s_rise = int(weather['sun_rise'])
+    s_set = time.strftime('%H:%M:%S', time.localtime(s_set))
+    s_rise = time.strftime('%H:%M:%S', time.localtime(s_rise))
     sun_value = 'Now Dhaka sunset at ' + str(s_set) + ' sunrise at ' + str(s_rise) 
     return sun_value
 
 
-def text_matching():
+def text_matching(r_msg):
     t_hi = ['hi','Hi','HI','hI']
     t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
     t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great', ':)']
