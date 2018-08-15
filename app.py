@@ -166,7 +166,7 @@ def temperature():
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
         }              
     ]
-    tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
+    # tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
     return r_c_temp
 
 
