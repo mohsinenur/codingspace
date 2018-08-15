@@ -115,7 +115,7 @@ def send_temp_message(recipient_id, weather_vaule, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
-    txt_snd = weather_vaule['title']
+    txt_snd = 'text'
     
     session_query = Message(user_id=recipient_id, text_send=txt_snd, text_receive=r_msg,
                              date=time_format, session=txt_snd)
