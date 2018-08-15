@@ -143,7 +143,7 @@ def temperature():
     weather = {
         'temperature': data['currently']['temperature'],
         'summary': data['currently']['summary'],
-        'icon': data['currently']['icon']
+        'icon': data['currently']['icon'],
         'timezone': data['timezone']
     }
     f_temp = int(weather['temperature'])
