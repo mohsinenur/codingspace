@@ -150,7 +150,7 @@ def salat_time():
     w_api_address = 'http://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=5'
     data = requests.get(w_api_address).json()
     salat = {
-        'fajr': data['data']['timings']['fajr'],
+        'fajr': data['data']['timings']['Fajr']
     }
     s_fajr = salat['fajr']
     s_fajr_value = 'Today Dhaka Fajr Start at ' + s_fajr
