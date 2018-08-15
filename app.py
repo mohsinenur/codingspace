@@ -146,19 +146,15 @@ def temperature():
     return tempereature
 
 
-def sun_set():
-    w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
+def salat_time():
+    w_api_address = 'http://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=5'
     data = requests.get(w_api_address).json()
-    weather = {
-        'sun_set': data['daily']['data' = 'sunsetTime'],
-        'sun_rise': data['daily']['data' = 'sunriseTime']
+    salat = {
+        'fajr': data['data']['timings']['fajr'],
     }
-    s_set = int(weather['sun_set'])
-    s_rise = int(weather['sun_rise'])
-    s_set = time.strftime('%H:%M:%S', time.localtime(s_set))
-    s_rise = time.strftime('%H:%M:%S', time.localtime(s_rise))
-    sun_value = 'Now Dhaka sunset at ' + str(s_set) + ' sunrise at ' + str(s_rise) 
-    return sun_value
+    s_fajr = salat['fajr']
+    s_fajr_value = 'Today Dhaka Fajr Start at ' + s_fajr
+    return s_fajr_value
 
 
 def text_matching(r_msg, exist_user):
@@ -170,7 +166,7 @@ def text_matching(r_msg, exist_user):
     t_who_r_u = ['who are you?', 'Who are you?']
     t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature', 'dhaka temp', 'temp']
     t_tnx = ['tnx', 'thanks', 'thank you', 'Thanks', 'Tnx', 'Thank you']
-    t_sun_set = ['sun set', 'sun rise', 'sun']
+    t_salat = ['salat', 'prayer time']
 
     # matching text for reply
     if r_msg in t_hi:
@@ -195,8 +191,8 @@ def text_matching(r_msg, exist_user):
         response_sent_text = 'I am Bot. Made by SSL Developer Team.'
     elif r_msg in t_temp:
         response_sent_text = temperature()
-    elif r_msg in t_sun_set:
-        response_sent_text = sun_set()
+    elif r_msg in t_salat:
+        response_sent_text = salat_time()
     else:
         response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
     
