@@ -86,8 +86,8 @@ def receive_message():
                             w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
                             data = requests.get(w_api_address).json()
                             weather = {
-                                'title': data['currently']['temperature']
-                                'image_url': data['currently']['icon']
+                                'title': data['currently']['temperature'],
+                                'image_url': data['currently']['icon'],
                                 'subtitle': data['currently']['summary']
                             }
                             f_temp = int(weather['temperature'])
