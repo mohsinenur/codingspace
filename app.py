@@ -160,7 +160,7 @@ def salat_time():
         'Imsak': data['data']['timings']['Imsak'],
         'Midnight': data['data']['timings']['Midnight']
     }
-    salat_value = 'Fajar ' + salat['Fajr'] + '\nSunrise ' + salat['Sunrise'] + '\nDhuhr ' + salat['Dhuhr'] + '\nAsar ' + salat['Asr'] + '\nSunset ' + salat['Sunset'] + 'Maghrib ' + salat['Maghrib'] + '\nIsha ' + salat['Isha'] + '\nImsak ' + salat['Imsak'] + '\nMidnight ' + salat['Midnight']
+    salat_value = 'Fajar ' + salat['Fajr'] + '\nSunrise ' + salat['Sunrise'] + '\nDhuhr ' + salat['Dhuhr'] + '\nAsar ' + salat['Asr'] + '\nSunset ' + salat['Sunset'] + '\nMaghrib ' + salat['Maghrib'] + '\nIsha ' + salat['Isha'] + '\nImsak ' + salat['Imsak'] + '\nMidnight ' + salat['Midnight']
     return salat_value
 
 
