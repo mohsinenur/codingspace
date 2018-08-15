@@ -100,9 +100,11 @@ def receive_message():
                                   "payload":{
                                     "template_type":"generic",
                                     "elements":[
-                                        'title': str(r_c_temp) + '°C',
-                                        'image_url': weather['icon'],
-                                        'subtitle': weather['summary']
+                                        {
+                                            'title': str(r_c_temp) + '°C',
+                                            'image_url': weather['icon'],
+                                            'subtitle': weather['summary']
+                                        }
                                     ]
                                   }
                                 }
