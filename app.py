@@ -162,8 +162,9 @@ def send_temp_message(recipient_id, response, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
-    session_query = Message(user_id=recipient_id, text_send=response, text_receive=r_msg,
-                             date=time_format, session=response)
+    txt_snd = response['temperature']
+    session_query = Message(user_id=recipient_id, text_send=txt_snd, text_receive=r_msg,
+                             date=time_format, session=txt_snd)
     if session_query:
         db.session.add(session_query)
         db.session.commit()
