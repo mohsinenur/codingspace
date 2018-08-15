@@ -151,16 +151,16 @@ def salat_time():
     data = requests.get(w_api_address).json()
     salat = {
         'Fajr': data['data']['timings']['Fajr']
-        'Sunrise': data['data']['timings']['Sunrise']
-        'Dhuhr': data['data']['timings']['Dhuhr']
-        'Asr': data['data']['timings']['Asr']
-        'Sunset': data['data']['timings']['Sunset']
-        'Maghrib': data['data']['timings']['Maghrib']
-        'Isha': data['data']['timings']['Isha']
-        'Imsak': data['data']['timings']['Imsak']
+        'Sunrise': data['data']['timings']['Sunrise'],
+        'Dhuhr': data['data']['timings']['Dhuhr'],
+        'Asr': data['data']['timings']['Asr'],
+        'Sunset': data['data']['timings']['Sunset'],
+        'Maghrib': data['data']['timings']['Maghrib'],
+        'Isha': data['data']['timings']['Isha'],
+        'Imsak': data['data']['timings']['Imsak'],
         'Midnight': data['data']['timings']['Midnight']
     }
-    salat_value = 'Fajar ' + salat['Fajr'] + '</br>Sunrise ' + salat['Sunrise'] + 'Fajar ' + salat['Dhuhr']
+    salat_value = 'Fajar ' + salat['Fajr'] + '</br>Sunrise ' + salat['Sunrise'] + '</br>Fajar ' + salat['Dhuhr']
     return s_fajr_value
 
 
