@@ -87,46 +87,12 @@ def receive_message():
                             w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
                             data = requests.get(w_api_address).json()
                             weather = {
-                                'temperature': data['currently']['temperature'],
-                                'icon': data['currently']['icon'],
-                                'summary': data['currently']['summary']
+                                'temperature': data['currently']['temperature']
                             }
                             f_temp = int(weather['temperature'])
                             c_temp = (f_temp - 32) * 5 / 9
                             r_c_temp = round(c_temp)
-                            weather_vaule = {
-                                "attachment":{
-                                  "type":"template",
-                                  "payload":{
-                                    "template_type":"generic",
-                                    "elements":[
-                                       {
-                                        "title":"Welcome!",
-                                        "image_url":"https://petersfancybrownhats.com/company_image.png",
-                                        "subtitle":"We have the right hat for everyone.",
-                                        "default_action": {
-                                          "type": "web_url",
-                                          "url": "https://petersfancybrownhats.com/view?item=103",
-                                          "webview_height_ratio": "tall",
-                                        },
-                                        "buttons":[
-                                          {
-                                            "type":"web_url",
-                                            "url":"https://petersfancybrownhats.com",
-                                            "title":"View Website"
-                                          },{
-                                            "type":"postback",
-                                            "title":"Start Chatting",
-                                            "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                                          }              
-                                        ]      
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
-                            # sending template msg
-                            send_temp_message(recipient_id, weather_vaule, r_msg)
+                            response_sent_text = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
                         else:
                             response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
                         
@@ -189,10 +155,10 @@ def send_temp_message(recipient_id, weather_vaule, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
-    # txt_snd = weather_vaule['attachment']['payload']['elements']['title']
+    txt_snd = weather_vaule['title']
     
-    session_query = Message(user_id=recipient_id, text_send='no', text_receive=r_msg,
-                             date=time_format, session='no')
+    session_query = Message(user_id=recipient_id, text_send=txt_snd, text_receive=r_msg,
+                             date=time_format, session=txt_snd)
     if session_query:
         db.session.add(session_query)
         db.session.commit()
