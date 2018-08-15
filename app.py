@@ -159,17 +159,17 @@ def send_message(recipient_id, response, r_msg):
     return "success"
 
 
-def send_temp_message(recipient_id, response, r_msg):
+def send_temp_message(recipient_id, weather_vaule, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
-    txt_snd = response['title']
+    txt_snd = weather_vaule['title']
     session_query = Message(user_id=recipient_id, text_send=txt_snd, text_receive=r_msg,
                              date=time_format, session=txt_snd)
     if session_query:
         db.session.add(session_query)
         db.session.commit()
-        bot.send_generic_message(recipient_id, response)
+        bot.send_generic_message(recipient_id, weather_vaule)
     else:
         response = 'Sorry something went wrong! at ' + time_format
         bot.send_generic_message(recipient_id, response)
