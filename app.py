@@ -150,7 +150,7 @@ def temperature():
     r_c_temp = round(c_temp)
     elements =   [
            {
-            "title":"Welcome!",
+            "title":'Now Dhaka temperature is ' + str(r_c_temp) + '°C',
             "image_url":"https://petersfancybrownhats.com/company_image.png",
             "subtitle":"We have the right hat for everyone.",
             "default_action": {
