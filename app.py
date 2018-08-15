@@ -150,7 +150,7 @@ def salat_time():
     w_api_address = 'http://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=5'
     data = requests.get(w_api_address).json()
     salat = {
-        'Fajr': data['data']['timings']['Fajr']
+        'Fajr': data['data']['timings']['Fajr'],
         'Sunrise': data['data']['timings']['Sunrise'],
         'Dhuhr': data['data']['timings']['Dhuhr'],
         'Asr': data['data']['timings']['Asr'],
