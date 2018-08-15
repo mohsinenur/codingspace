@@ -52,45 +52,9 @@ def receive_message():
                     if message['message'].get('text'):
                         r_msg = message['message']['text']
                         # declearing variable
-                        response_sent_text = ''
-                        t_hi = ['hi','Hi','HI','hI']
-                        t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
-                        t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great', ':)']
-                        t_how_r_u = ['how are you?', 'How are you?']
-                        t_hmm = ['hmm', 'Hmm', 'oh', 'ooh', 'ok', 'okay', 'Ok', 'OK', 'Okay']
-                        t_who_r_u = ['who are you?', 'Who are you?']
-                        t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature', 'dhaka temp', 'temp']
-                        t_tnx = ['tnx', 'thanks', 'thank you', 'Thanks', 'Tnx', 'Thank you']
-
-                        # matching text for reply
-                        if r_msg in t_hi:
-                            if exist_user:
-                                response_sent_text = 'Hello, welcome back :)'
-                            else:
-                                response_sent_text = 'Hello, how can I help you?'                         
-                        elif r_msg in t_hello:
-                            if exist_user:
-                                response_sent_text = 'Hi, welcome back :)'
-                            else:
-                                response_sent_text = 'Hi, how can I help you?'
-                        elif r_msg in t_fine:
-                            response_sent_text = ':)'
-                        elif r_msg in t_how_r_u:
-                            response_sent_text = 'I am fine. You?'
-                        elif r_msg in t_hmm:
-                            response_sent_text = 'Hmm'
-                        elif r_msg in t_tnx:
-                            response_sent_text = 'You are welcome :)'
-                        elif r_msg in t_who_r_u:
-                            response_sent_text = 'I am Bot. Made by SSL Developer Team.'
-                        elif r_msg in t_temp:
-                            response_sent_text = temperature()
-                        else:
-                            response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
-                        
+                        response_sent_text = text_matching()
                         # sending text msg
-                        if response_sent_text != '':
-                            send_message(recipient_id, response_sent_text, r_msg)
+                        send_message(recipient_id, response_sent_text, r_msg)
                         
                     # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
@@ -179,6 +143,45 @@ def temperature():
     r_c_temp = round(c_temp)
     tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
     return tempereature
+
+
+def text_matching():
+    t_hi = ['hi','Hi','HI','hI']
+    t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
+    t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great', ':)']
+    t_how_r_u = ['how are you?', 'How are you?']
+    t_hmm = ['hmm', 'Hmm', 'oh', 'ooh', 'ok', 'okay', 'Ok', 'OK', 'Okay']
+    t_who_r_u = ['who are you?', 'Who are you?']
+    t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature', 'dhaka temp', 'temp']
+    t_tnx = ['tnx', 'thanks', 'thank you', 'Thanks', 'Tnx', 'Thank you']
+
+    # matching text for reply
+    if r_msg in t_hi:
+        if exist_user:
+            response_sent_text = 'Hello, welcome back :)'
+        else:
+            response_sent_text = 'Hello, how can I help you?'                         
+    elif r_msg in t_hello:
+        if exist_user:
+            response_sent_text = 'Hi, welcome back :)'
+        else:
+            response_sent_text = 'Hi, how can I help you?'
+    elif r_msg in t_fine:
+        response_sent_text = ':)'
+    elif r_msg in t_how_r_u:
+        response_sent_text = 'I am fine. You?'
+    elif r_msg in t_hmm:
+        response_sent_text = 'Hmm'
+    elif r_msg in t_tnx:
+        response_sent_text = 'You are welcome :)'
+    elif r_msg in t_who_r_u:
+        response_sent_text = 'I am Bot. Made by SSL Developer Team.'
+    elif r_msg in t_temp:
+        response_sent_text = temperature()
+    else:
+        response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
+    
+    return response_sent_text
 
 
 if __name__ == "__main__":
