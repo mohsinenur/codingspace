@@ -86,26 +86,25 @@ def receive_message():
                             w_api_address = 'https://api.darksky.net/forecast/66f19b250a5e0730c037c857603339f4/23.8103,90.4125'
                             data = requests.get(w_api_address).json()
                             weather = {
-                                'title': data['currently']['temperature'],
-                                'image_url': data['currently']['icon'],
-                                'subtitle': data['currently']['summary']
+                                'temperature': data['currently']['temperature'],
+                                'icon': data['currently']['icon'],
+                                'summary': data['currently']['summary']
                             }
                             f_temp = int(weather['temperature'])
                             c_temp = (f_temp - 32) * 5 / 9
                             r_c_temp = round(c_temp)
                             weather_vaule = {
-                                'title': r_c_temp,
-                                'image_url': weather['image_url'],
-                                'subtitle': weather['subtitle']
+                                'title': r_c_temp + str(r_c_temp) + '°C',
+                                'image_url': weather['icon'],
+                                'subtitle': weather['summary']
                             }
-                            response_sent_text = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
-                        else:
-                            response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
-
-                        # sending msg
-                        if t_temp:
+                            # sending template msg
                             send_temp_message(recipient_id, weather_vaule, r_msg)
                         else:
+                            response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
+                        
+                        # sending text msg
+                        if response_sent_text:
                             send_message(recipient_id, response_sent_text, r_msg)
                         
                     # if user sends us a GIF, photo,video, or any other non-text item
