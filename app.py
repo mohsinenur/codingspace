@@ -145,27 +145,29 @@ def temperature():
     f_temp = int(weather['temperature'])
     c_temp = (f_temp - 32) * 5 / 9
     r_c_temp = round(c_temp)
-    r_c_temp = [       
-        {
+    r_c_temp =   [
+           {
             "title":"Welcome!",
             "image_url":"https://petersfancybrownhats.com/company_image.png",
             "subtitle":"We have the right hat for everyone.",
             "default_action": {
-                "type": "web_url",
-                "url": "https://petersfancybrownhats.com/view?item=103",
-                "webview_height_ratio": "tall",
+              "type": "web_url",
+              "url": "https://petersfancybrownhats.com/view?item=103",
+              "webview_height_ratio": "tall",
             },
             "buttons":[
-            {
+              {
                 "type":"web_url",
                 "url":"https://petersfancybrownhats.com",
                 "title":"View Website"
-            },{
+              },{
                 "type":"postback",
                 "title":"Start Chatting",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
-        }              
-    ]
+              }              
+            ]      
+          }
+        ]              
     # tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
     return r_c_temp
 
