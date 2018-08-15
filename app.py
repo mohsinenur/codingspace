@@ -55,10 +55,11 @@ def receive_message():
                         # declearing variable
                         response_sent_text = text_matching(r_msg, exist_user)
                         # sending text msg
-                        if type(response_sent_text) == 'str': 
-                            send_message(recipient_id, response_sent_text, r_msg)
+                        if response_sent_text == 'temp':
+                            temp_vaule = temperature()
+                            send_temp_message(recipient_id, temp_vaule, r_msg)
                         else:
-                            send_temp_message(recipient_id, response_sent_text, r_msg)
+                            send_message(recipient_id, response_sent_text, r_msg)
                         
                     # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
@@ -224,7 +225,7 @@ def text_matching(r_msg, exist_user):
     elif r_msg in t_who_r_u:
         response_sent_text = 'I am Bot. Made by SSL Developer Team.'
     elif r_msg in t_temp:
-        response_sent_text = temperature()
+        response_sent_text = 'temp'
     elif r_msg in t_salat:
         response_sent_text = salat_time()
     else:
