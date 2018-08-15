@@ -53,7 +53,7 @@ def receive_message():
                     if message['message'].get('text'):
                         r_msg = message['message']['text']
                         # declearing variable
-                        response_sent_text = text_matching(r_msg)
+                        response_sent_text = text_matching(r_msg, exist_user)
                         # sending text msg
                         send_message(recipient_id, response_sent_text, r_msg)
                         
@@ -161,7 +161,7 @@ def sun_set():
     return sun_value
 
 
-def text_matching(r_msg):
+def text_matching(r_msg, exist_user):
     t_hi = ['hi','Hi','HI','hI']
     t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
     t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great', ':)']
