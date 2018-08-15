@@ -182,6 +182,15 @@ def salat_time():
         'Imsak': data['data']['timings']['Imsak'],
         'Midnight': data['data']['timings']['Midnight']
     }
+    elements =   [
+           {
+            "title":"Fajar",
+            "subtitle":salat['Fajr']     
+          },{
+            "title":"Sunrise",
+            "subtitle":salat['Sunrise']     
+          }
+        ] 
     salat_value = 'Fajar ' + salat['Fajr'] + '\nSunrise ' + salat['Sunrise'] + '\nDhuhr ' + salat['Dhuhr'] + '\nAsar ' + salat['Asr'] + '\nSunset ' + salat['Sunset'] + '\nMaghrib ' + salat['Maghrib'] + '\nIsha ' + salat['Isha'] + '\nImsak ' + salat['Imsak'] + '\nMidnight ' + salat['Midnight']
     return salat_value
 
@@ -196,7 +205,7 @@ def text_matching(r_msg, exist_user):
     t_who_r_u = ['who are you?', 'Who are you?']
     t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature', 'dhaka temp', 'temp']
     t_tnx = ['tnx', 'thanks', 'thank you', 'Thanks', 'Tnx', 'Thank you']
-    t_salat = ['salat', 'prayer time']
+    t_salat = ['salat time', 'prayer time', 'namaj time']
 
     # matching text for reply
     if r_msg in t_hi:
@@ -222,7 +231,7 @@ def text_matching(r_msg, exist_user):
     elif r_msg in t_temp:
         response_sent_text = 'temp'
     elif r_msg in t_salat:
-        response_sent_text = salat_time()
+        response_sent_text = 'salat'
     else:
         response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
     
