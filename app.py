@@ -151,8 +151,8 @@ def temperature():
     elements =   [
            {
             "title":'Now Dhaka temperature is ' + str(r_c_temp) + '°C',
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
-            "subtitle":"We have the right hat for everyone.",
+            "image_url":weather['icon'],
+            "subtitle":weather['summary'],
             "default_action": {
               "type": "web_url",
               "url": "https://petersfancybrownhats.com/view?item=103",
