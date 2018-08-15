@@ -83,14 +83,12 @@ def receive_message():
                         elif r_msg in t_who_r_u:
                             response_sent_text = 'I am Bot. Made by SSL Developer Team.'
                         elif r_msg in t_temp:
-                            api_address = 'https://samples.openweathermap.org/data/2.5/weather?appid=ed4fb99c31f3dd7a8c587d70cb1fe8ff&q=Dhaka'
+                            api_address = 'https://samples.openweathermap.org/data/2.5/find?q=Dhaka&units=metric&appid=ed4fb99c31f3dd7a8c587d70cb1fe8ff'
                             data = requests.get(api_address).json()
-
                             weather = {
                                 'temperature': data['main']['temp']
                             }
-                            f_temp = int(weather['temperature'])
-                            c_temp = (f_temp - 32) * 5 / 9
+                            c_temp = int(weather['temperature'])
                             r_c_temp = round(Decimal(c_temp), 2)
                             response_sent_text = 'Now Dhaka temperature is ' + str(r_c_temp) + ' °C'
                         else:
