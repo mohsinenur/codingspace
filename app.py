@@ -52,6 +52,7 @@ def receive_message():
                     if message['message'].get('text'):
                         r_msg = message['message']['text']
                         # declearing variable
+                        response_sent_text = ''
                         t_hi = ['hi','Hi','HI','hI']
                         t_hello = ['hello','Hello','HELLO','hlw','Hlw','HLW']
                         t_fine = ['fine', 'Fine', 'Nice', 'nice', 'Great', 'great', ':)']
@@ -104,7 +105,7 @@ def receive_message():
                             response_sent_text = "Unknown text! You can type 'temp' to know temperature. :)"
                         
                         # sending text msg
-                        if response_sent_text:
+                        if response_sent_text != '':
                             send_message(recipient_id, response_sent_text, r_msg)
                         
                     # if user sends us a GIF, photo,video, or any other non-text item
