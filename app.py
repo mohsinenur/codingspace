@@ -101,7 +101,8 @@ def receive_message():
                                     "template_type":"generic",
                                     "elements":[
                                         {
-                                            'title': str(r_c_temp) + '°C',
+                                            # 'title': str(r_c_temp) + '°C',
+                                            'title': r_c_temp,
                                             'image_url': weather['icon'],
                                             'subtitle': weather['summary']
                                         }
