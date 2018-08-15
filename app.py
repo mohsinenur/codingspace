@@ -100,15 +100,31 @@ def receive_message():
                                   "payload":{
                                     "template_type":"generic",
                                     "elements":[
-                                        {
-                                            # 'title': str(r_c_temp) + '°C',
-                                            'title': r_c_temp,
-                                            'image_url': weather['icon'],
-                                            'subtitle': weather['summary']
-                                        }
+                                       {
+                                        "title":"Welcome!",
+                                        "image_url":"https://petersfancybrownhats.com/company_image.png",
+                                        "subtitle":"We have the right hat for everyone.",
+                                        "default_action": {
+                                          "type": "web_url",
+                                          "url": "https://petersfancybrownhats.com/view?item=103",
+                                          "webview_height_ratio": "tall",
+                                        },
+                                        "buttons":[
+                                          {
+                                            "type":"web_url",
+                                            "url":"https://petersfancybrownhats.com",
+                                            "title":"View Website"
+                                          },{
+                                            "type":"postback",
+                                            "title":"Start Chatting",
+                                            "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                                          }              
+                                        ]      
+                                      }
                                     ]
                                   }
                                 }
+                              }
                             }
                             # sending template msg
                             send_temp_message(recipient_id, weather_vaule, r_msg)
@@ -174,9 +190,10 @@ def send_temp_message(recipient_id, weather_vaule, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
-    txt_snd = weather_vaule['attachment']['payload']['elements']['title']
-    session_query = Message(user_id=recipient_id, text_send=txt_snd, text_receive=r_msg,
-                             date=time_format, session=txt_snd)
+    # txt_snd = weather_vaule['attachment']['payload']['elements']['title']
+    
+    session_query = Message(user_id=recipient_id, text_send='no', text_receive=r_msg,
+                             date=time_format, session='no')
     if session_query:
         db.session.add(session_query)
         db.session.commit()
