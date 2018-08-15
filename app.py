@@ -170,8 +170,6 @@ def temperature():
               }              
             ]      
           }
-        ]      
-          }
         ]              
     # tempereature = 'Now Dhaka temperature is ' + str(r_c_temp) + '°C'
     return elements
