@@ -162,7 +162,7 @@ def send_temp_message(recipient_id, response, r_msg):
     # sends user the text message provided via input response parameter
     now = datetime.datetime.now()
     time_format = now.strftime("%d/%m/%y %H:%M")
-    txt_snd = response['temperature']
+    txt_snd = response['title']
     session_query = Message(user_id=recipient_id, text_send=txt_snd, text_receive=r_msg,
                              date=time_format, session=txt_snd)
     if session_query:
