@@ -58,7 +58,7 @@ def receive_message():
                         t_how_r_u = ['how are you?', 'How are you?']
                         t_hmm = ['hmm', 'Hmm', 'oh', 'ooh', 'ok', 'okay', 'Ok', 'OK', 'Okay']
                         t_who_r_u = ['who are you?', 'Who are you?']
-                        t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature']
+                        t_temp = ['temperature in dhaka', 'what is temperature in dhaka?', 'dhaka temperature', 'dhaka temp']
                         t_tnx = ['tnx', 'thanks', 'thank you', 'Thanks', 'Tnx', 'Thank you']
 
                         # matching text for reply
@@ -88,7 +88,8 @@ def receive_message():
                             weather = {
                                 'temperature': data['currently']['temperature']
                             }
-                            c_temp = int(weather['temperature'])
+                            f_temp = int(weather['temperature'])
+                            c_temp = (f_temp - 32) * 5 / 9
                             response_sent_text = 'Now Dhaka temperature is ' + str(c_temp) + ' °C'
                         else:
                             response_sent_text = 'Unknown text! Reply you later. :)'
