@@ -150,18 +150,18 @@ def temperature():
     r_c_temp = round(c_temp)
     elements =   [
            {
-            "title":'Now Dhaka temperature is ' + str(r_c_temp) + '°C',
-            "image_url":weather['icon'],
+            "title":str(r_c_temp) + '°C ' weather['icon'],
+            # "image_url":,
             "subtitle":weather['summary'],
             "default_action": {
               "type": "web_url",
-              "url": "https://petersfancybrownhats.com/view?item=103",
+              "url": "https://weather.com/",
               "webview_height_ratio": "tall",
             },
             "buttons":[
               {
                 "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
+                "url":"https://weather.com/",
                 "title":"View Website"
               },{
                 "type":"postback",
