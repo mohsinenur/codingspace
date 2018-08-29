@@ -77,7 +77,7 @@ def home():
 
 
 @app.route("/test", methods=['GET', 'POST'])
-def home():
+def test():
     return render_template('test.html')
 
 
