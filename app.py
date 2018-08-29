@@ -76,6 +76,11 @@ def home():
     return render_template('fbchat.html')
 
 
+@app.route("/test", methods=['GET', 'POST'])
+def home():
+    return render_template('test.html')
+
+
 def verify_fb_token(token_sent):
     # take token sent by facebook and verify it matches the verify token you sent
     # if they match, allow the request, else return an error
